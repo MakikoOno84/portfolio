@@ -1,7 +1,8 @@
-import SyntaxHighlighter from "react-syntax-highlighter";
+// import SyntaxHighlighter from "react-syntax-highlighter";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useState } from 'react'
-import { dark }from 'react-syntax-highlighter/styles/hljs';
-
+// import syntaxTheme from '../global/syntaxTheme';
 
 function HighlightCode({ code }) {
     const [codeOpen, setCodeOpen] = useState(false);
@@ -15,7 +16,7 @@ function HighlightCode({ code }) {
         <div className={`code-content ${codeOpen ? 'open' : 'close'}`}>
             <SyntaxHighlighter
                 language='javascript'
-                style={dark}
+                style={vscDarkPlus}
                 showLineNumbers={true}
                 wrapLines={true}>
                 {code}

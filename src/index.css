@@ -33,6 +33,7 @@
 	--background-color-nav-bar-mobile:var(--color-light-gray);
 	--background-color-nav-bar-desktop:var(--color-white);
 	--background-color-work-content-headline:var(--color-light-gray);
+	--background-color-code:rgb(30, 30, 30);
 
 	/* Button color */
 	--button-border-color:var(--color-black);
@@ -1408,7 +1409,7 @@ footer p {
 
 .code-content {
 	position: relative;
-	background-color: rgb(68, 68, 68);
+	background-color: var(--background-color-code);
 	padding: 1rem;
 	border-radius: 10px;
 }
@@ -1424,7 +1425,7 @@ footer p {
 
 .code-button {
 		/* remove default setting: begin */
-		background-color: var(--color-black);
+		background-color: var(--background-color-code);
 		color: var(--color-white);
 		border: none;
 		cursor: pointer;
