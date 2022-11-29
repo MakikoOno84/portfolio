@@ -1409,8 +1409,6 @@ footer p {
 
 .code-content {
 	position: relative;
-	background-color: var(--background-color-code);
-	padding: 1rem;
 	border-radius: 10px;
 }
 .code-content pre {
