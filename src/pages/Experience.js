@@ -74,7 +74,7 @@ const Experience = () => {
       };
   
       useEffect(() => {
-          let mediaQuery = window.matchMedia('(min-width: 700px)');
+          let mediaQuery = window.matchMedia('(min-width: 800px)');
           if (mediaQuery.matches === true) {
             setEnableSlick(false);
             } else {
