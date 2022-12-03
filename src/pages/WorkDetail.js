@@ -51,6 +51,13 @@ const displayFlexibleContents = (content) => {
     }
 }
 
+    // Features/Highlight tab
+    const [sortTab,setsortTab] = useState('features')
+    const filterContent = (filterType) => {
+        // console.log('Clicked'); 
+        setsortTab(filterType);
+    }
+
 return (
     <>
     { isLoaded ?
@@ -110,45 +117,97 @@ return (
                 { restData.acf.collaborators &&
                 <div className='collaborators'>
                     <h2>Collaborators</h2>
-                    <ul>
+                    <ul className='page-link collaborators-link'>
                         {restData.acf.collaborators.map((collaborator,i) =>
                             <li key={i}>
-                                <a href={collaborator.link}>{collaborator.name}</a>
+                                <a 
+                                    href={collaborator.link}
+                                    className='line-animation'
+                                >{collaborator.name}</a>
                             </li>
                         )}
                     </ul>
                 </div>
                 }
             </section>
-            { restData.acf.features &&
-            <div className='features'>
-                <h2>Features</h2>
-                    {restData.acf.features.map((feature,i) =>
-                        <article key={i}>
-                            <h3>{feature.title}</h3>
-                            <p>{feature.description}</p>
-                        </article>
+            <section className='indiv-work-bottom'>
+                <div className='sortbtn'>
+                    { restData.acf.features &&  
+                        <button 
+                            className={sortTab === 'features' && 'active'}
+                            onClick={()=>filterContent('features')}    
+                        >
+                            <h2>Features</h2>
+                        </button>
+                    }
+                    { restData.acf.highlight &&  
+                        <button 
+                            className={sortTab === 'highlight' && 'active'}
+                            onClick={()=>filterContent('highlight')}
+                        >
+                            <h2>Technical Highlights</h2>
+                        </button>
+                    }  
+                </div>
+                <div className='indiv-work-content'>
+                {restData.acf.features && 
+                     <article className={sortTab==='features' && 'active'}>
+                        {restData.acf.features.map((feature,i) =>
+                            <div key={i}>
+                                    <h3>{feature.title}</h3>
+                                    <p>{feature.description}</p>
+                            </div> 
+                        )}
+                    </article>
+                }
+                {restData.acf.highlight && 
+                    <article className={sortTab==='highlight' && 'active'}>
+                        {restData.acf.highlight.map((item,i) =>
+                            <div key={i}>
+                                <h3>{item.title}</h3>
+                                <p>{item.description}</p>
+                                {item.contents && 
+                                    item.contents.map((content,i) =>
+                                        <div key={i}>
+                                            {displayFlexibleContents(content)}
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        )}
+                    </article>
+                }
+                </div>
+                {/* { restData.acf.features &&
+                <div className='features'>
+                    <h2>Features</h2>
+                        {restData.acf.features.map((feature,i) =>
+                            <article key={i}>
+                                <h3>{feature.title}</h3>
+                                <p>{feature.description}</p>
+                            </article>
+                        )}
+                </div>
+                }
+                {restData.acf.highlight && 
+                    <article>
+                    <h2>Technical Highlights</h2>
+                    {restData.acf.highlight.map((item,i) =>
+                        <div key={i}>
+                            <h3>{item.title}</h3>
+                            <p>{item.description}</p>
+                            {item.contents && 
+                                item.contents.map((content,i) =>
+                                    <div key={i}>
+                                        {displayFlexibleContents(content)}
+                                    </div>
+                                )
+                            }
+                        </div>
                     )}
-            </div>
-            }
-            {restData.acf.highlight && 
-                <article>
-                <h2>Technical Highlights</h2>
-                {restData.acf.highlight.map((item,i) =>
-                    <div key={i}>
-                        <h3>{item.title}</h3>
-                        <p>{item.description}</p>
-                        {item.contents && 
-                            item.contents.map((content,i) =>
-                                <div key={i}>
-                                    {displayFlexibleContents(content)}
-                                </div>
-                            )
-                        }
-                    </div>
-                )}
-                </article>
-            }
+                    </article>
+                } */}
+            </section>
             <div className='page-bottom-links'>
                 <Link to='/works' className='page-link line-animation'>Go Back All Work</Link>
                 <ReturnToTop />

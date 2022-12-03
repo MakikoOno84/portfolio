@@ -22,8 +22,7 @@
 	--font-size-header-3:1.5rem;
 	--font-size-body: 1.125rem;
 	--font-size-intro:2rem;
-	--font-size-skill-xs:1rem;
-	--font-size-navlink:1rem;
+	--font-size-xs:1rem;
 
 	/* font color */
 	--font-color-white:var(--color-white);
@@ -123,6 +122,15 @@ h2 {
 h3 {
 	font-size:var(--font-size-header-3)
 }
+.indiv-work-bottom h2 {
+	font-size: var(--font-size-xs);
+}
+@media (min-width: 600px ) {
+	.indiv-work-bottom h2 {
+		font-size: var(--font-size-header-3);
+	}
+}
+
 mark {
 	background: #ff0;
 	color: #000;
@@ -794,7 +802,7 @@ footer p {
 }
 .site-navigation1 a {
 	padding:0 1rem ;
-	font-size: var(--font-size-navlink);
+	font-size: var(--font-size-xs);
 }
 
 @media (min-width:800px){
@@ -1058,7 +1066,7 @@ fill:HSLA(242,100%,70%,1);
 	font-size: var(--font-size-intro);
 }
 .home-wrapper .content-skills {
-	font-size: var(--font-size-skill-xs);
+	font-size: var(--font-size-xs);
 	
 }
 
@@ -1390,7 +1398,9 @@ fill:HSLA(242,100%,70%,1);
 
 }
 
-.indiv-work-wrapper .page-link li {
+.indiv-work-wrapper .page-link li,
+.indiv-work-wrapper .collaborators li
+{
 	width: fit-content;
 	margin-bottom: 10px;
 }
@@ -1416,11 +1426,6 @@ fill:HSLA(242,100%,70%,1);
 	width: fit-content;
 }
 
-.indiv-work-wrapper h2 {
-	background-color: var(--background-color-work-content-headline);
-	padding-left: 10px;
-}
-
 .indiv-work-wrapper video,
 .indiv-work-wrapper img {
 	box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
@@ -1441,7 +1446,7 @@ fill:HSLA(242,100%,70%,1);
 }
 
 
-.code-content.close {
+.code-content {
 	overflow: hidden;
 }
 
@@ -1744,7 +1749,21 @@ body {
 	max-width: 100%;
 }
 
-.viewproject ul {
+.indiv-work-bottom article {
+	display: none;
+	animation-name:fadeUpAnime2;
+	animation-delay: .3s;
+	animation-duration:0.5s;
+	animation-fill-mode:forwards;
+	opacity:0;	
+}
+.indiv-work-bottom article.active {
+	display: initial;
+
+}
+.viewproject ul,
+.collaborators ul
+{
 	list-style: none;
 }
 @media (min-width:600px ){
@@ -1785,10 +1804,32 @@ body {
 	  }
 }
 
+.indiv-work-top,
+.indiv-work-bottom
+ {
+	margin-bottom: 130px;
+}
+.indiv-work-bottom button {
+	border-radius: initial;
+}
+.indiv-work-bottom .sortbtn .active{
+	border-bottom: none;
+	border-top: 3px solid var(--color-blue);
+}
+.indiv-work-bottom h2 {
+	margin: 1rem auto;
+	line-height: 1.0;
+}
+.indiv-work-content {
+	background-color: var(--color-light-gray);
+	padding: 1rem;
+	border-radius: 10px;
+}
 @media (min-width:900px) {
 	.indiv-work-top {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+		gap: 10px;
 	}
 	.indiv-work-top .overview {
 		grid-column: 1 / 2;
