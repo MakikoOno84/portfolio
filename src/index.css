@@ -1859,13 +1859,22 @@ body {
 	color: var(--color-light-black);
 }
 .indiv-work-bottom h2 {
-	margin: 1rem auto;
+	margin: 0.8rem auto;
 	line-height: 1.0;
 }
 .indiv-work-content {
 	background-color: var(--color-light-gray);
 	padding: 1rem;
 	border-radius: 10px;
+}
+
+.indiv-work-content img {
+	display: block;
+	margin: 0 auto;
+}
+
+.indiv-work-content figcaption {
+	margin-top: 1rem;
 }
 @media (min-width:900px) {
 	.indiv-work-top {

@@ -99,7 +99,7 @@ return (
                             <>
                             {link.acf_fc_layout === 'live_site_link' &&
                             <li key={i}>
-                                <a href={restData.acf.git_link} className='line-animation'>
+                                <a href={link.url} className='line-animation'>
                                     <LinkIcon/>
                                     <span>LiveSite</span>
                                 </a>
@@ -107,7 +107,7 @@ return (
                             }
                             { link.acf_fc_layout === 'github_link' &&
                             <li key={i}>
-                                <a href={restData.acf.git_link} className='line-animation'>
+                                <a href={link.url} className='line-animation'>
                                     <GitHubIcon/>
                                     <span>GitHub Repository</span>
                                 </a>
