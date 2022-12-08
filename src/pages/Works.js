@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Loading from '../components/Loading'
 import Skills from '../components/Skills'
-import parse from 'html-react-parser'
 import ReturnToTop from '../components/ReturnToTop'
 import Helmet from 'react-helmet'
 import { featuredImage } from '../scripts/script'
@@ -48,16 +47,8 @@ const Works = () => {
             */}
             {restData?.map( cpost => 
                  <article key={cpost.id} id={`post-${cpost.id}`} className='work-item'>
-                 {/* {cpost._embedded['wp:featuredmedia'][0] &&
-                    <Link to={`/workdetail/${cpost.id}`}
-                    //   state= {{movie: oneContent, base_url: base_url}}
-                    >
-                        <figure className="featured-image" dangerouslySetInnerHTML={featuredImage(cpost._embedded['wp:featuredmedia'][0])}></figure>
-                    </Link>
-                 } */}
                 <div className='work-content'>
                         <Link to={`/workdetail/${cpost.id}`}
-                            //   state= {{movie: oneContent, base_url: base_url}}
                                 ><h2>{cpost.title.rendered}</h2>
                         </Link>
                     <p>{excerpt(cpost.acf.work_description)}</p>
@@ -66,7 +57,6 @@ const Works = () => {
                  {cpost._embedded['wp:featuredmedia'][0] &&
                     <Link to={`/workdetail/${cpost.id}`} className='work-image'
                     >
-                        {/* {parse(cpost.content.rendered)} */}
                         <figure dangerouslySetInnerHTML={featuredImage(cpost._embedded['wp:featuredmedia'][0])}></figure>
                     </Link>
                  }

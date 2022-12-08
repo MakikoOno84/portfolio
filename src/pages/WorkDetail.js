@@ -15,6 +15,8 @@ const WorkDetail = ({featuredImage}) => {
     const restPath = `https://makiko.dev/webportfolio/wp-json/wp/v2/mopf-work/${id}?acf_format=standard`
     const [restData, setData] = useState([])
     const [isLoaded, setLoadStatus] = useState(false)
+    // Features/Highlight tab
+    const [sortTab, setsortTab] = useState()
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(restPath)
@@ -22,6 +24,12 @@ const WorkDetail = ({featuredImage}) => {
                 const data = await response.json()
                 setData(data)
                 setLoadStatus(true)
+                // Features/Highlight tab default
+                if (data.acf.features !== false) {
+                    setsortTab('features')
+                } else {
+                    setsortTab('highlight')
+                }
             } else {
                 setLoadStatus(false)
             }
@@ -50,11 +58,8 @@ const displayFlexibleContents = (content) => {
         )
     }
 }
-
     // Features/Highlight tab
-    const [sortTab,setsortTab] = useState('features')
     const filterContent = (filterType) => {
-        // console.log('Clicked'); 
         setsortTab(filterType);
     }
 
@@ -132,7 +137,7 @@ return (
             </section>
             <section className='indiv-work-bottom'>
                 <div className='sortbtn'>
-                    { restData.acf.features &&  
+                    { restData.acf.features !== false &&  
                         <button 
                             className={sortTab === 'features' && 'active'}
                             onClick={()=>filterContent('features')}    
@@ -140,7 +145,7 @@ return (
                             <h2>Features</h2>
                         </button>
                     }
-                    { restData.acf.highlight &&  
+                    { restData.acf.highlight !== false &&  
                         <button 
                             className={sortTab === 'highlight' && 'active'}
                             onClick={()=>filterContent('highlight')}
@@ -150,7 +155,7 @@ return (
                     }  
                 </div>
                 <div className='indiv-work-content'>
-                {restData.acf.features && 
+                {restData.acf.features !== false && 
                      <article className={sortTab==='features' && 'active'}>
                         {restData.acf.features.map((feature,i) =>
                             <div key={i}>
@@ -160,7 +165,7 @@ return (
                         )}
                     </article>
                 }
-                {restData.acf.highlight && 
+                {restData.acf.highlight !== false && 
                     <article className={sortTab==='highlight' && 'active'}>
                         {restData.acf.highlight.map((item,i) =>
                             <div key={i}>
@@ -178,35 +183,6 @@ return (
                     </article>
                 }
                 </div>
-                {/* { restData.acf.features &&
-                <div className='features'>
-                    <h2>Features</h2>
-                        {restData.acf.features.map((feature,i) =>
-                            <article key={i}>
-                                <h3>{feature.title}</h3>
-                                <p>{feature.description}</p>
-                            </article>
-                        )}
-                </div>
-                }
-                {restData.acf.highlight && 
-                    <article>
-                    <h2>Technical Highlights</h2>
-                    {restData.acf.highlight.map((item,i) =>
-                        <div key={i}>
-                            <h3>{item.title}</h3>
-                            <p>{item.description}</p>
-                            {item.contents && 
-                                item.contents.map((content,i) =>
-                                    <div key={i}>
-                                        {displayFlexibleContents(content)}
-                                    </div>
-                                )
-                            }
-                        </div>
-                    )}
-                    </article>
-                } */}
             </section>
             <div className='page-bottom-links'>
                 <Link to='/works' className='page-link line-animation'>Go Back All Work</Link>

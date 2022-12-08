@@ -934,6 +934,7 @@ footer p {
 @media (min-width:600px) {
 	.site-main {
 		display: flex;
+		align-items: center;
 	
 	}
 	.sidebar-wrapper {
@@ -1057,6 +1058,7 @@ fill:HSLA(242,100%,70%,1);
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	align-items: center;
 	gap: 10px;
 
 }
@@ -1607,10 +1609,6 @@ figcaption {
 
 
 /*---- Page About ----*/
-.about-wrapper h1,
-.about-wrapper h2 {
-	color: var(--color-yellow);
-}
 .about-wrapper {
 	animation-name:fadeUpAnime;
 	animation-delay: 1s;
@@ -1654,7 +1652,7 @@ body {
 	justify-content: center;
 }
 .sortbtn .active {
-	color: var(--color-light-black);
+	color: var(--color-white);
 	background-color: var(--color-light-gray);
 	border-bottom: 3px solid var(--color-pale-blue);
 }
@@ -1678,7 +1676,51 @@ body {
 	animation-fill-mode:forwards;
 	opacity:0;	
 	text-align: center;
+	border: 1px solid var(--color-yellow);
+	padding: .5rem 1rem;
+	border-radius: 10px;
+	background-color: var(--color-yellow);
+	color: var(--color-white);
 }
+.about-wrapper .sortbtn {
+	gap: 0;
+}
+.about-wrapper .sortbtn button {
+	font-size: var(--font-size-xs);
+	background-color: var(--color-pale-yellow);
+	border-radius: initial;
+	border:1px solid var(--color-white);
+
+}
+
+.about-wrapper .sortbtn .active {
+	background-color: var(--color-white);
+	color: var(--color-light-black);
+	border: 1px solid var(--color-yellow);
+	position: relative;
+}
+
+/* .about-wrapper .sortbtn .active:before {
+	content: "";
+	position: absolute;
+	bottom: -24px;
+	left: 50%;
+	margin-left: -15px;
+	border: 12px solid transparent;
+	border-top: 12px solid #FFF;
+	z-index: 2;
+}
+
+.about-wrapper .sortbtn .active:after {
+	content: "";
+	position: absolute;
+	bottom: -30px;
+	left: 50%;
+	margin-left: -17px;
+	border: 14px solid transparent;
+	border-top: 15px solid var(--color-yellow);
+	z-index: 1;
+} */
 
 @keyframes fadeUpAnime2{
 	from {
@@ -1697,7 +1739,6 @@ body {
 }
 
 .about-wrapper .content-skills ul {
-	background-color: var(--color-light-gray);	
 	border-radius: 15px;
 	padding: 1rem 1rem;
 	min-height:310px;
@@ -1815,6 +1856,7 @@ body {
 .indiv-work-bottom .sortbtn .active{
 	border-bottom: none;
 	border-top: 3px solid var(--color-blue);
+	color: var(--color-light-black);
 }
 .indiv-work-bottom h2 {
 	margin: 1rem auto;

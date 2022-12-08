@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 
 const Skills = ({skillArray,skillCategory}) => {
     let restPath = 'https://makiko.dev/webportfolio/wp-json/wp/v2/mopf-skill-category'
-
     if (skillCategory==='front-end') {
         restPath = 'https://makiko.dev/webportfolio/wp-json/wp/v2/mopf-skill-category?parent=3'
     } else if (skillCategory==='back-end') {
@@ -38,21 +37,6 @@ const Skills = ({skillArray,skillCategory}) => {
         }
         fetchData()
     }, [restPath])
-
-    // function filterSkill() {
-    //     let matchedSkillArray = [];
-    //     if (skillArray.length > 0) {
-    //         for (let i=0 ; i < skillArray.length ; i++) {
-    //             for (let j=0 ; j < restData.length ; j++) {
-    //                 if ( skillArray[i] === restData[j].id ) {
-    //                     matchedSkillArray.push(restData[j].name);
-    //                     break;
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return matchedSkillArray;
-    // }
 
     return (
         <>

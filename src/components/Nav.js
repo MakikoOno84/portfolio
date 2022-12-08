@@ -1,5 +1,4 @@
-import {NavLink, useLocation} from 'react-router-dom';
-import {ReactComponent as HamburgerIcon2 } from "../images/hamburger2.svg"
+import {NavLink} from 'react-router-dom';
 const Nav = () => {
 
     return (

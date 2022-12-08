@@ -21,12 +21,6 @@ const Sidebar = () => {
         fetchData()
     }, [restPath])
 
-    // Parse html for svg tag
-    // function parseInput(rsltinput) {
-    //     const parsedinput = parse(rsltinput);
-    //     return parsedinput;
-    // }
-
     // format href if it's email
     function formatHref(slug,text) {
         if (slug === 'email') {

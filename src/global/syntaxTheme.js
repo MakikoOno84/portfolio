@@ -18,7 +18,7 @@ export default {
     "msHyphens": "none",
     "hyphens": "none",
     "padding": "1em",
-    "padding-bottom":"4rem",
+    "paddingBottom":"4rem",
     // "margin": ".5em 0",
     "overflow": "auto",
     "background": "#1e1e1e"

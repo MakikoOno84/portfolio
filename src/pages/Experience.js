@@ -1,13 +1,9 @@
-import { useState, useRef,useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useState,useEffect } from 'react'
 import Loading from '../components/Loading'
-import Skills from '../components/Skills'
 import parse from 'html-react-parser'
 import Slider from "react-slick";
-import ArrowLeft from '../images/arrow-left.svg'
 import '../slick-theme.css'
 import {HashLink} from 'react-router-hash-link'
-// import ReturnToTop from '../components/ReturnToTop'
 
 const Experience = () => {
     const restPath = 'https://makiko.dev/webportfolio/wp-json/wp/v2/mopf-students'
@@ -38,7 +34,6 @@ const Experience = () => {
             dots: true,
             arrows:false,
             infinite: false,
-            speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
             speed:500,
@@ -48,19 +43,6 @@ const Experience = () => {
             centerPadding:"10px",
             beforeChange:(current,next) => setActiveSlide(next),
             afterChange:current => setActiveSlide2(current),
-            // nextArrow:<NextArrow cname={'custom-next-arrow'}/>,
-            // prevArrow:<NextArrow cname={'custom-prev-arrow'}/>
-            // responsive: [
-            //   {
-            //     breakpoint: 600,
-            //     settings: {
-            //         swipe:false
-            //     //     slidesToShow: 2,
-            //     //   slidesToScroll: 2,
-            //     //   initialSlide: 2
-            //     }
-            //   }
-            // ]
         };
 
 
@@ -88,14 +70,9 @@ const Experience = () => {
     // manage active timeline on desktop
     const [activeSlideDesktop,setActiveSlideDesktop] = useState(0)
     function handleActiveSlideDesktop(id) {
-        console.log('clicked!');
-        // e.preventDefault();
         setActiveSlideDesktop(id);
     }
-    // useEffect(() => {
-    //     setActiveSlideDesktop(restData[0].id)
-    // },[isLoaded]
-    // )
+
     return (
         <>
         { isLoaded ? 
@@ -117,9 +94,8 @@ const Experience = () => {
                         {restData?.map( (cpost, idx) =>
                             <div key={idx} className={`timeline ${activeSlideDesktop === cpost.id && 'active'}`}>
                                 <HashLink 
-                                    to={"#" + `experience-${cpost.id}`}
+                                    to={`#experience-${cpost.id}`}
                                     onClick={(e) => {
-                                        // e.preventDefault();
                                         handleActiveSlideDesktop(cpost.id);
                                     }}
                                 >
@@ -148,8 +124,6 @@ const Experience = () => {
                     </>
                     }
                 </section>
-
-                {/* <ReturnToTop/> */}
             </div>
             </>
          : <Loading />

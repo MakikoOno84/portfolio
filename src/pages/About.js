@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import Loading from '../components/Loading'
-// import ReturnToTop from '../components/ReturnToTop'
 import Helmet from 'react-helmet'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faLaptopCode, faServer, faScrewdriverWrench} from '@fortawesome/free-solid-svg-icons'
+
 const About = () => {
     // About page
     const restPath = 'https://makiko.dev/webportfolio/wp-json/wp/v2/pages/62?_embed'
@@ -12,7 +14,6 @@ const About = () => {
     const [restSkillDataBack, setSkillDataBack] = useState([])
     const [restSkillDataDev, setSkillDataDev] = useState([])
     const [isLoaded, setLoadStatus] = useState(false)
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,7 +49,6 @@ const About = () => {
     // Skill tab
     const [sortTab,setsortTab] = useState('front')
     const filterSkills = (filterType) => {
-        // console.log('Clicked'); 
         setsortTab(filterType);
     }
 
@@ -73,13 +73,22 @@ const About = () => {
                         <div className='sortbtn'>
                             <button 
                             className={sortTab ==='front' ? 'active' : null}
-                            onClick={() => filterSkills('front')}>Front-End</button>
+                            onClick={() => filterSkills('front')}>
+                                <FontAwesomeIcon icon={faLaptopCode} size="lg"/>
+                                <div>Front-End</div>
+                            </button>
                             <button 
                             className={sortTab ==='back' ? 'active' : null}
-                            onClick={() => filterSkills('back')}>Back-End</button>
+                            onClick={() => filterSkills('back')}>
+                                <FontAwesomeIcon icon={faServer} size="lg"/>
+                                <div>Back-End</div>
+                            </button>
                             <button 
                             className={sortTab ==='dev' ? 'active' : null}
-                            onClick={() => filterSkills('dev')}>Dev</button>
+                            onClick={() => filterSkills('dev')}>
+                                <FontAwesomeIcon icon={faScrewdriverWrench} size="lg"/>
+                                <div>Dev</div>
+                            </button>
                         </div>
                         <ul className='skills'>
                             {restSkillDataFront?.map((oneSkill, i) =>
@@ -94,7 +103,6 @@ const About = () => {
                         </ul>
                     </div>
                 </article>
-                {/* <ReturnToTop/> */}
             </div>
             </>
         : 
